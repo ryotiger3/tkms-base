@@ -6,6 +6,10 @@
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import ProductPrice from "../product_price"
+import Card from "../card"
 
 Rails.start()
 ActiveStorage.start()
+ProductPrice.start()
+Card.start()

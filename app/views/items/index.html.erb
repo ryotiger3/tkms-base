@@ -1,0 +1,171 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+      <div class='store-btn'>
+      <%= link_to image_tag("tiktok-logo.png", class:"tiktok-btn"), "#" %>
+      <%= link_to image_tag("instagram-logo.png", class:"instagram-btn"), "#" %>
+      <%= link_to image_tag("twitter-logo.png", class:"twitter-btn"), "#" %>
+    </div>
+  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+  <%# FURIMAが選ばれる3つの理由部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+    TKMS BASE
+    </h2>
+    <p class='service-explain'>
+    大槌町浪板海岸
+    </p>
+    <p class='service-explain'>
+    これが自慢の地元の海です。
+    </p>
+  </div>
+
+  <div class='select-reason-contents'>
+    <h2 class='title'>
+      XXXXXXXXXXXXXXXXX
+    </h2>
+    <ul class='reason-lists'>
+      <li class='list'>
+        <%= image_tag "sample.png", class:"list-pict" %>
+        <span class='reason-list-number'>1</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>みんなで</span>
+          明るく
+        </h3>
+        <p class='reason-list-description'>
+          XXXXXXXXXXXXXXXXX
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "sample.png", class:"list-pict" %>
+        <span class='reason-list-number'>2</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>みんなで</span>
+          楽しく
+        </h3>
+        <p class='reason-list-description'>
+          XXXXXXXXXXXXXXXXX
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "sample.png", class:"list-pict" %>
+        <span class='reason-list-number'>3</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>みんなで</span>
+          おもしろく
+        </h3>
+        <p class='reason-list-description'>
+          XXXXXXXXXXXXXXXXX
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /TKMS BASEが選ばれる3つの理由部分 %>
+
+  <div class='ad-contents'>
+    <h2 class='ad-title'>
+    </h2>
+    <p class='ad-explain'>
+    </p>
+    <p class='ad-explain'>
+    </p>
+  </div>
+
+  <div class='feature-contents'>
+    <h2 class='title'>
+      TKMS BASEの特徴
+    </h2>
+    <ul class='feature-lists'>
+      <li class='list'>
+        <%= image_tag "furima-intro04.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          XXXXXXXXXXXXXXXXX
+        </h3>
+        <p class='feature-list-description'>
+          XXXXXXXXXXXXXXXXX
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro05.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          XXXXXXXXXXXXXXXXXX
+        </h3>
+        <p class='feature-list-description'>
+          XXXXXXXXXXXXXXXXX
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro06.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          XXXXXXXXXXXXXXXXX
+        </h3>
+        <p class='feature-list-description'>
+        XXXXXXXXXXXXXXXXX
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <div class='item-contents'>
+    <h2 class='title'>ピックアップカテゴリー</h2>
+    <div class="subtitle" >
+         新商品
+    </div>
+      <ul class='item-lists'>
+       <% if @products.exists? %>
+       <% @products.each do |product| %>
+         <li class='list'>
+          <%= link_to product_path(product.id) do %>
+          <div class='item-img-content'>
+            <%= image_tag product.image, class: "item-img"%>
+            <% if product.purchase_history != nil %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
+
+          </div>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= product.name %>
+            </h3>
+            <div class='item-price'>
+              <span><%= product.price %>円<br><%= product.shipping_days.name %></span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
+            </div>
+          </div>
+          <% end %>
+       </li>
+      <% end %>
+      
+      <% else %>
+        <li class='list'>
+          <%= link_to '#' do %>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                商品を出品してね！
+              </h3>
+              <div class='item-price'>
+                <span>99999999円<br>(税込み)</span>
+                <div class='star-btn'>
+                  <%= image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<%= link_to( new_product_path, class: 'purchase-btn') do %>
+  <%= image_tag 'icon.png' , size: '100x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= render "shared/footer" %>
