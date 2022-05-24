@@ -1,10 +1,10 @@
-class ProductsController < ApplicationController
+class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :ensure_current_user, only: [:edit, :update]
   
   def index
-    @items = Product.all.order(created_at: "DESC")
+    @items = Item.all.order(created_at: "DESC")
   end
 
   def new
@@ -42,11 +42,11 @@ class ProductsController < ApplicationController
   end
 
     private
-    def product_params
+    def item_params
       params.require(:product).permit(:name, :price, :description, :category_id, :shipping_days_id, :image).merge(user_id: current_user.id)
     end
 
-    def set_product
+    def set_item
       @item = Item.find(params[:id])
     end
 

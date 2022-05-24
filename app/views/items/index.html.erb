@@ -114,13 +114,13 @@
          新商品
     </div>
       <ul class='item-lists'>
-       <% if @products.exists? %>
-       <% @products.each do |product| %>
+       <% if @items.exists? %>
+       <% @items.each do |item| %>
          <li class='list'>
-          <%= link_to product_path(product.id) do %>
+          <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
-            <%= image_tag product.image, class: "item-img"%>
-            <% if product.purchase_history != nil %>
+            <%= image_tag item.image, class: "item-img"%>
+            <% if item.purchase_history != nil %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
@@ -129,10 +129,10 @@
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
-              <%= product.name %>
+              <%= item.name %>
             </h3>
             <div class='item-price'>
-              <span><%= product.price %>円<br><%= product.shipping_days.name %></span>
+              <span><%= item.price %>円<br><%= item.shipping_days.name %></span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
@@ -165,7 +165,7 @@
   </div>
 </div>
 
-<%= link_to( new_product_path, class: 'purchase-btn') do %>
+<%= link_to( new_item_path, class: 'purchase-btn') do %>
   <%= image_tag 'icon.png' , size: '100x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
