@@ -1,0 +1,20 @@
+.admin-login-btn {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.admin-login-red-btn {
+  width: 100%;
+  background: black;
+  border: 1px solid grey;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.admin-login-flash-message {
+  text-align: center;
+  color: red;
+}
